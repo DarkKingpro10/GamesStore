@@ -1,58 +1,125 @@
 :root {
-	--bg: #0f1320;
-	--fg: #e8e8f0;
-	--accent: #7aa2f7;
+	/* Paleta de colores principal */
+	--background: #F8FCFA;
+	--font-color: #080B0A;
+	--primary: #4AC9A5;
+	--secondary: #82EBCD;
+	--accent: #3FF5C2;
+	--font-color-revert: #FFFFFF;
+
+	/* Colores adicionales del tema */
+	--foreground-color: #ABE2C6;
+	--foreground-accent: #1A9757;
+
+	/* Fuentes */
+	--font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+	--font-family-icons: 'Material Symbols Outlined';
+
+	/* Alias para compatibilidad */
+	--bg: var(--background);
+	--fg: var(--font-color);
 }
 
-* {
+*,
+::after,
+::before {
 	box-sizing: border-box;
-}
-
-html,
-body {
-	height: 100%;
 	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
 body {
-	font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
-	background: var(--bg);
-	color: var(--fg);
+	font-family: var(--font-family);
+	background: var(--background);
+	color: var(--font-color);
 }
 
-.app-header {
-	padding: 12px 16px;
-	border-bottom: 1px solid #23263a;
-	position: sticky;
-	top: 0;
-	background: rgba(15, 19, 32, .9);
-	backdrop-filter: saturate(150%) blur(4px);
+/* Clases de utilidad para colores */
+.text-primary {
+	color: var(--primary);
 }
 
-.app-header h1 {
-	margin: 0;
-	font-size: 20px;
-	letter-spacing: .5px;
+.text-secondary {
+	color: var(--secondary);
 }
 
-.app-main {
-	padding: 16px;
-}
-
-.button {
-	display: inline-flex;
-	gap: 8px;
-	align-items: center;
-	background: #1f2335;
-	color: var(--fg);
-	border: 1px solid #2a2f4a;
-	padding: 8px 12px;
-	border-radius: 8px;
-	cursor: pointer;
-	text-decoration: none;
-}
-
-.button:hover {
-	border-color: var(--accent);
+.text-accent {
 	color: var(--accent);
+}
+
+.text-foreground {
+	color: var(--foreground-color);
+}
+
+.text-foreground-accent {
+	color: var(--foreground-accent);
+}
+
+.bg-primary {
+	background-color: var(--primary);
+}
+
+.bg-secondary {
+	background-color: var(--secondary);
+}
+
+.bg-accent {
+	background-color: var(--accent);
+}
+
+.bg-foreground {
+	background-color: var(--foreground-color);
+}
+
+.bg-foreground-accent {
+	background-color: var(--foreground-accent);
+}
+
+.poppins-light {
+	font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+}
+
+.poppins-regular {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.poppins-medium {
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.poppins-semibold {
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.poppins-bold {
+	font-family: "Poppins", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.poppins-extrabold {
+	font-family: "Poppins", sans-serif;
+	font-weight: 800;
+	font-style: normal;
+}
+
+.poppins-black {
+	font-family: "Poppins", sans-serif;
+	font-weight: 900;
+	font-style: normal;
+}
+
+.poppins-regular-italic {
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	font-style: italic;
 }

@@ -25,7 +25,7 @@ function createWindow() {
 			devTools: isDev ? true : false,
 			sandbox: true, // Siempre habilitado para máxima seguridad
 			// Configuraciones necesarias SOLO para desarrollo con Vite HMR:
-			webSecurity: isDev ? false : true, // Permite cargar desde localhost:5175
+			webSecurity: false, // Permitir recursos externos (CDNs, Google, etc.)
 			allowRunningInsecureContent: isDev, // Permite contenido mixto HTTP/HTTPS
 			preload: path.join(__dirname, "preload.js"),
 		},
