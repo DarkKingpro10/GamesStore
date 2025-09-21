@@ -1,0 +1,56 @@
+{
+  "name": "gamesstore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development vite",
+    "dev:web": "cross-env NODE_ENV=development vite",
+    "dev:desktop": "concurrently --kill-others \"cross-env NODE_ENV=development vite\" \"wait-on http://127.0.0.1:5175 && cross-env NODE_ENV=development electron .\"",
+    "build": "cross-env NODE_ENV=production VITE_TARGET=web vite build",
+    "build:desktop": "cross-env NODE_ENV=production VITE_TARGET=desktop vite build && electron-builder --win",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "concurrently": "9.2.1",
+    "cross-env": "10.0.0",
+    "electron": "31.0.2",
+    "electron-builder": "24.13.3",
+    "nodemon": "3.1.10",
+    "vite": "7.1.6",
+    "wait-on": "9.0.1"
+  },
+  "build": {
+    "appId": "com.yourorg.gamesstore",
+    "productName": "GamesStore",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**/*",
+      "dist/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

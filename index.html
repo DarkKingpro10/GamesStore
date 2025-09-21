@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- CSP amigable para desarrollo (permite Vite HMR). En producción sigue siendo restrictiva. -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' ws: http: https:; object-src 'none'; base-uri 'self';">
+  <title>GamesStore</title>
+  <!-- Carga general.js para inyectar automáticamente styles.css -->
+  <script type="module" src="./src/general.js" defer></script>
+</head>
+
+<body>
+  <header class="app-header">
+    <h1>GamesStore</h1>
+  </header>
+  <main class="app-main">
+    <p>Hola desde Web y Desktop (Electronic)</p>
+  </main>
+
+  <script type="module" src="./src/index.js"></script>
+</body>
+
+</html>
