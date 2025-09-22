@@ -1,6 +1,7 @@
 // Archivo general para inicialización global del renderer
 // Vite soporta importar CSS directamente desde JS, lo que lo inyecta en el bundle
 import "./styles.css";
+import "./styles/sweetalert.css";
 
 export const LINKS_EXTERNAL = Object.freeze([
 	Object.freeze({
@@ -71,7 +72,7 @@ export function loadExternalLinks() {
 /**
  * Función de inicialización que se ejecuta cuando el DOM está listo
  */
-export function initializeApp() {
+export async function initializeApp() {
 	console.log('🚀 Inicializando aplicación...');
 	
 	// Cargar enlaces externos
@@ -81,12 +82,20 @@ export function initializeApp() {
 	if (window.app?.env?.isElectron) {
 		console.log('🖥️ Ejecutándose en Electron');
 		document.body.classList.add('electron-app');
+		
+		// Deshabilitar navegación de historial en Electron
+		try {
+			const { disableHistoryNavigation } = await import('./electron/navigation-control.js');
+			disableHistoryNavigation();
+		} catch (error) {
+			console.warn('⚠️ No se pudo cargar control de navegación:', error);
+		}
 	} else {
 		console.log('🌐 Ejecutándose en navegador web');
 		document.body.classList.add('web-app');
 	}
 
-	// Añadir clase para indicar que la app está lista
+	// Añadir clase para indicar que la app está ready
 	document.body.classList.add('app-ready');
 }
 

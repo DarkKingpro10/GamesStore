@@ -167,7 +167,7 @@ body {
 
 	input {
 		background: var(--foreground-color);
-		color: var(--font-color-revert);
+		/* color: var(--font-color-revert); */
 		border-radius: 25px;
 		padding: 10px 20px;			
 		flex:1;

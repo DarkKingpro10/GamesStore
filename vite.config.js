@@ -1,9 +1,12 @@
 import { defineConfig } from "vite";
+import path from "path";
 
 // Permite targets diferentes según el entorno (web vs desktop/Electron)
 export default defineConfig(({ command, mode }) => {
 	return {
 		root: "src",
+		// Especificar donde buscar archivos .env (en la raíz del proyecto)
+		envDir: "../",
 		// Configuración para desarrollo
 		server: {
 			port: 5175,

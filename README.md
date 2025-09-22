@@ -1,29 +1,54 @@
 # GamesStore
 
-Aplicación base para Web y Desktop (Electron) con un menú de ventana para minimizar, maximizar/restaurar y cerrar.
+Aplicación de tienda de juegos para Web y Desktop (Electron) con autenticación Firebase.
 
-## Requisitos
+## 🚀 Características
+
+- ✅ Autenticación con Firebase (registro/login)
+- ✅ Validación con Zod
+- ✅ Interfaz responsive
+- ✅ Compatible con Web y Electron
+
+## 📋 Requisitos
 - Node.js 18+
+- Cuenta de Firebase
 
-## Instalación
+## ⚙️ Setup rápido
+
+### 1. Instalar dependencias
 ```cmd
 npm install
 ```
 
-## Ejecutar en Desktop (Electron)
+### 2. Configurar Firebase
 ```cmd
+# Copiar template
+copy .env.example .env.local
+
+# Editar .env.local con tus credenciales de Firebase Console
+```
+
+### 3. Ejecutar
+```cmd
+# Web
+npm run dev
+
+# Desktop (Electron)
 npm run dev:desktop
 ```
-Se abrirá una ventana con menú (Archivo, Ventana, Ver). En "Ventana" encontrarás:
-- Minimizar
-- Maximizar/Restaurar (Ctrl+M)
-- Cerrar ventana
 
-## Ejecutar en Web
-```cmd
-npm run dev:web
-```
-Luego abre en el navegador: http://localhost:5173
+## 🔧 Configuración de Firebase
+
+1. Ve a [Firebase Console](https://console.firebase.google.com)
+2. Crea un proyecto nuevo
+3. Habilita **Authentication** > **Email/Password**
+4. Copia las credenciales a `.env.local`
+
+## � Uso
+
+- **Registro**: Crea una cuenta nueva
+- **Login**: Inicia sesión con tu cuenta
+- **Validación**: Campos con validación automática
 
 El HTML principal (`src/index.html`) importa `styles.css` e `index.js` para que los estilos apliquen en la página. Si agregas más páginas HTML, incluye la misma línea:
 ```html

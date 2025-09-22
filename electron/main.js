@@ -22,7 +22,7 @@ function createWindow() {
 		webPreferences: {
 			contextIsolation: true,
 			nodeIntegration: false,
-			devTools: true,
+			devTools: isDev ? true : false,
 			sandbox: true, // Siempre habilitado para máxima seguridad
 			// Configuraciones necesarias SOLO para desarrollo con Vite HMR:
 			webSecurity: false, // Permitir recursos externos (CDNs, Google, etc.)
@@ -45,6 +45,23 @@ function createWindow() {
 	win.once("ready-to-show", () => {
 		win.show();
 		win.maximize(); // Maximizar la ventana al iniciar
+	});
+
+	// Deshabilitar navegación atrás/adelante en Electron
+	win.webContents.on('before-input-event', (event, input) => {
+		// Deshabilitar Alt+Left (atrás) y Alt+Right (adelante)
+		if (input.alt && (input.key === 'ArrowLeft' || input.key === 'ArrowRight')) {
+			event.preventDefault();
+		}
+		// Deshabilitar teclas de navegación del mouse si las hay
+		if (input.key === 'BrowserBack' || input.key === 'BrowserForward') {
+			event.preventDefault();
+		}
+	});
+
+	// Deshabilitar el menú contextual con "Atrás" y "Adelante"
+	win.webContents.on('context-menu', (event, params) => {
+		event.preventDefault(); // Opcional: deshabilitar menú contextual completamente
 	});
 
 	// Bloquear navegación fuera de la app (file://) y abrir https externamente
