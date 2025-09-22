@@ -3,7 +3,6 @@ import { registerSchema, validateWithZod } from '../validation/schemas.js';
 import { initAuthControl } from '../auth/auth-control.js';
 import { showError, showRegisterSuccess, showLoading, closeSwal } from '../utils/alerts.js';
 
-console.log("🔐 Página de registro cargada");
 
 const TOGGLE_PASSWORD = document.getElementById("togglePassword");
 const TOGGLE_CONFIRM_PASSWORD = document.getElementById(

@@ -81,7 +81,6 @@ export async function registerUser(email, password, displayName = '') {
  */
 export async function loginUser(email, password) {
   try {
-    console.log('🔐 Iniciando sesión:', email);
     
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;

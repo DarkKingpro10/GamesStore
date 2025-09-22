@@ -24,6 +24,9 @@ console.log("Redirigiendo al dashboard...");
 
 	// Si el usuario NO está autenticado y está en páginas protegidas
 	// TODO: Implementar cuando tengas páginas que requieran autenticación
+	if(!currentUser && currentPage.includes("dashboard")) {
+		window.location.href = "/index.html";
+	}
 }
 
 /**
