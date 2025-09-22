@@ -72,8 +72,22 @@ export function loadExternalLinks() {
  * Función de inicialización que se ejecuta cuando el DOM está listo
  */
 export function initializeApp() {
+	console.log('🚀 Inicializando aplicación...');
+	
 	// Cargar enlaces externos
 	loadExternalLinks();
+	
+	// Detectar si estamos en Electron
+	if (window.app?.env?.isElectron) {
+		console.log('🖥️ Ejecutándose en Electron');
+		document.body.classList.add('electron-app');
+	} else {
+		console.log('🌐 Ejecutándose en navegador web');
+		document.body.classList.add('web-app');
+	}
+
+	// Añadir clase para indicar que la app está lista
+	document.body.classList.add('app-ready');
 }
 
 // Ejecutar cuando el DOM esté listo

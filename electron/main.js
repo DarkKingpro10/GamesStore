@@ -22,7 +22,7 @@ function createWindow() {
 		webPreferences: {
 			contextIsolation: true,
 			nodeIntegration: false,
-			devTools: isDev ? true : false,
+			devTools: true,
 			sandbox: true, // Siempre habilitado para máxima seguridad
 			// Configuraciones necesarias SOLO para desarrollo con Vite HMR:
 			webSecurity: false, // Permitir recursos externos (CDNs, Google, etc.)

@@ -123,3 +123,68 @@ body {
 	font-weight: 400;
 	font-style: italic;
 }
+
+/*Estilo para el shadow*/
+.shadow {
+	box-shadow: -3px -3px 10px 5px var(--foreground-color, #ABE2C6);
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+/*Estilos para los input*/
+.input-field {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	label {
+		padding-left: 3px;
+		font-weight: 700;
+	}
+
+	.input-icon-container{
+		width: 100%;
+		display: flex;
+		gap: 10px;
+		background: var(--foreground-color);
+		border-radius: 25px;
+		padding-right: 10px;
+		.material-symbols-outlined{
+			display: flex;
+			align-items: center;
+		}
+
+		&:focus-within {
+			outline: 2px solid var(--accent);
+		}
+
+		input:focus {
+			outline: none;
+		}
+	}
+
+	input {
+		background: var(--foreground-color);
+		color: var(--font-color-revert);
+		border-radius: 25px;
+		padding: 10px 20px;			
+		flex:1;
+
+		&:focus {
+			outline: 2px solid var(--accent);
+		}
+	}
+}
+
+/*Button styles*/
+.btn-primary{
+	background: var(--primary);
+	color: var(--font-color-revert);
+	border-radius: 25px;
+	padding: 10px 20px;
+	width: 100%;
+	font-size: 24px;
+	font-weight: 700;
+}

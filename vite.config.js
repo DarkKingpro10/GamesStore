@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 // Permite targets diferentes según el entorno (web vs desktop/Electron)
 export default defineConfig(({ command, mode }) => {
 	return {
+		root: "src",
 		// Configuración para desarrollo
 		server: {
 			port: 5175,
@@ -21,14 +22,17 @@ export default defineConfig(({ command, mode }) => {
 
 		// Configuración para build
 		build: {
-			outDir: "dist",
+			outDir: "../dist", // Relativo al root (src), así va a la raíz del proyecto
 			sourcemap: true,
 			// Mantener la estructura para Electron
 			rollupOptions: {
 				input: {
-					main: "./index.html",
+					main: "src/index.html",
+					register: "src/register/register.html",
 				},
 			},
+			// Asegurar que las rutas relativas se resuelvan correctamente
+			emptyOutDir: true,
 		},
 
 		// Configuración base para assets

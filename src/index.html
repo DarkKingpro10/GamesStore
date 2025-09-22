@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- CSP que permite recursos externos de CDNs confiables -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://code.jquery.com https://ajax.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; connect-src 'self' ws: http: https:; object-src 'none'; base-uri 'self';">
+  <title>Games Store - Login</title>
+  <link rel="stylesheet" href="/login/index.css">
+  <!-- Carga general.js para inyectar automáticamente styles.css -->
+  <script type="module" src="general.js" defer></script>
+</head>
+
+<body>
+  <header class="app-header">
+    <h1>Games Store</h1>
+  </header>
+  <main class="app-main">
+    <form class="login-section">
+      <h2>Login</h2>
+      <div class="input-field">
+        <label for="correo">Correo</label>
+        <input type="email" id="correo" name="correo" required>
+      </div>
+      <div class="input-field">
+        <label for="password">Contraseña</label>
+        <div class="input-icon-container">
+          <input type="password" id="password" name="password" required>
+          <span class="material-symbols-outlined cursor-pointer" id="togglePassword">
+            visibility
+          </span>
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="submit" class="btn-primary cursor-pointer">Login</button>
+        <a class="register-link" href="./register/register.html" data-navigate="register">Registrarse</a>
+      </div>
+    </form>
+  </main>
+
+  <script type="module" src="login/index.js"></script>
+</body>
+
+</html>

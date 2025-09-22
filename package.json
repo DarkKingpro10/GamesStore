@@ -21,6 +21,7 @@
     "cross-env": "10.0.0",
     "electron": "31.0.2",
     "electron-builder": "24.13.3",
+    "glob": "11.0.3",
     "nodemon": "3.1.10",
     "vite": "7.1.6",
     "wait-on": "9.0.1"
