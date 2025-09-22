@@ -187,4 +187,10 @@ body {
 	width: 100%;
 	font-size: 24px;
 	font-weight: 700;
+	transition: all 0.3s ease-in;
+
+	&:hover{
+		background-color: var(--foreground-color);
+		color: var(--foreground-accent)
+	}
 }

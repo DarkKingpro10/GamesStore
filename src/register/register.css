@@ -1,0 +1,7 @@
+.register-link{
+  font-size: 14px;
+
+  &:hover{
+    color: var(--primary);
+  }
+}

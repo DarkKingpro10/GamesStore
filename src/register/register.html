@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,11 @@
     content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://code.jquery.com https://ajax.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; connect-src 'self' ws: http: https:; object-src 'none'; base-uri 'self';">
   <title>Games Store - Register</title>
   <link rel="stylesheet" href="../login/index.css">
+  <link rel="stylesheet" href="./register.css">
   <!-- Carga general.js para inyectar automáticamente styles.css -->
   <script type="module" src="../general.js" defer></script>
 </head>
+
 <body>
   <header class="app-header">
     <h1>Games Store</h1>
@@ -19,6 +22,10 @@
   <main class="app-main">
     <form class="login-section">
       <h2>Registro</h2>
+      <div class="input-field">
+        <label for="username">Nombre del usuario</label>
+        <input type="text" id="username" name="username" required>
+      </div>
       <div class="input-field">
         <label for="email">Correo</label>
         <input type="email" id="email" name="email" required>
@@ -50,4 +57,5 @@
 
   <script type="module" src="./register.js"></script>
 </body>
+
 </html>

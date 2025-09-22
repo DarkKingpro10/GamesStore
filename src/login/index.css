@@ -3,8 +3,10 @@
   width: 100%;
   background-color: var(--background);
 
+  display: grid;
+  place-items: center;
+
   color: var(--primary);
-  text-align: center;
 }
 
 main {
