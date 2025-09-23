@@ -1,0 +1,75 @@
+.app-header {
+  height: 70px;
+  width: 100%;
+  background-color: var(--background);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px;
+
+
+  color: var(--primary);
+
+  .btn-secondary {
+    width: clamp(150px, 20vw, 200px);
+    font-size: 18px;
+
+    .material-symbols-outlined {
+      font-size: 28px;
+    }
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+main {
+  background-color: var(--primary);
+  height: calc(100dvh - 70px);
+  /* Evitar que el contenido se desborde */
+  overflow: hidden;
+  padding: clamp(15px, 2vw, 30px) clamp(10px, 1vw, 25px);
+
+  .dashboard-container {
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    border-radius: 50px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.dashboard-header{
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  align-items: center;
+
+  .input-field{
+    width: clamp(75%, 5vw, 250px);
+    max-width: 250px;
+  }
+
+  button{
+    background-color: var(--primary);
+    border-radius: 25px;
+    padding: 10px 25px;
+    color: var(--font-color-revert)
+  }
+}
+
+@media (width < 600px) {
+  .app-header {
+    padding: 10px;
+
+    h1 {
+      font-size: 25px;
+    }
+  }
+}

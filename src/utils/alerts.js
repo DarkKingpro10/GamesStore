@@ -10,7 +10,7 @@ const customSwal = Swal.mixin({
     cancelButton: 'swal-btn-secondary',
     popup: 'swal-popup-custom'
   },
-  buttonsStyling: false,
+  buttonsStyling: true,
   showClass: {
     popup: 'animate__animated animate__fadeInDown animate__faster'
   },
@@ -84,12 +84,14 @@ export function showWarning(title, text = '') {
  * @param {string} text - Texto del mensaje (opcional)
  * @param {string} confirmButtonText - Texto del botón de confirmación
  * @param {string} cancelButtonText - Texto del botón de cancelación
+ * @param {boolean} reverseButtons - Si true: [Confirmar][Cancelar], si false: [Cancelar][Confirmar]
  */
 export function showConfirmation(
   title, 
   text = '', 
   confirmButtonText = 'Sí', 
-  cancelButtonText = 'No'
+  cancelButtonText = 'No',
+  reverseButtons = true
 ) {
   return customSwal.fire({
     icon: 'question',
@@ -98,7 +100,7 @@ export function showConfirmation(
     showCancelButton: true,
     confirmButtonText,
     cancelButtonText,
-    reverseButtons: true
+    reverseButtons
   });
 }
 
@@ -173,7 +175,7 @@ export async function showAlreadyAuthenticated(email) {
  * Confirmación para cerrar sesión
  */
 export function showLogoutConfirmation() {
-  return showConfirmation(
+  return showConfirmation(  
     '¿Cerrar sesión?',
     'Se cerrará tu sesión actual',
     'Sí, cerrar',

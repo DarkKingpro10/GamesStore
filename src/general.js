@@ -1,5 +1,6 @@
 // Archivo general para inicialización global del renderer
 // Vite soporta importar CSS directamente desde JS, lo que lo inyecta en el bundle
+import initAuthControl from "./auth/auth-control.js";
 import "./styles.css";
 import "./styles/sweetalert.css";
 
@@ -96,5 +97,6 @@ export async function initializeApp() {
 
 // Ejecutar cuando el DOM esté listo
 (() => {
+	initAuthControl();
 	document.addEventListener("DOMContentLoaded", initializeApp);
 })();

@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <script type="module" src="../general.js" defer></script>
 </head>
+
 <body>
-  HOLA
-  
+  <header class="app-header">
+    <h1>Games Store</h1>
+    <div class="header-actions">
+      <button type="button" class="btn-secondary">
+        Juegos
+        <span class="material-symbols-outlined">sports_esports</span>
+      </button>
+      <span id="logoutButton" class="material-symbols-outlined cursor-pointer">logout</span>
+    </div>
+  </header>
+  <main>
+    <section class="shadow dashboard-container">
+      <header class="dashboard-header">
+        <form class="input-field">
+          <div class="input-icon-container">
+            <input title="Buscar juegos" placeholder="Buscar juegos..." type="text" id="search" name="search" required>
+            <span 
+            title="Agregar juegos"
+            class="material-symbols-outlined cursor-pointer">
+              search
+            </span>
+          </div>
+        </form>
+        <button type="button">
+          <span class="material-symbols-outlined cursor-pointer">add</span>
+        </button>
+      </header>
+    </section>
+  </main>
+  <script type="module" src="./dashboard.js"></script>
 </body>
+
 </html>

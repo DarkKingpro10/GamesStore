@@ -110,4 +110,4 @@ if (LOGIN_FORM) {
 }
 
 // Inicializar control de autenticación
-initAuthControl();
+// initAuthControl();

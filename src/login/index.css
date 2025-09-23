@@ -13,7 +13,7 @@ main {
   background-color: var(--primary);
   height: calc(100dvh - 70px);
   display: grid;
-  place-content: center;  
+  place-content: center;
   /* Evitar que el contenido se desborde */
   overflow: hidden;
   padding: 5px;
@@ -28,42 +28,50 @@ main {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  
+
   /* Responsive width and height */
-  width: min(480px, 90vw); /* Máximo 480px, pero se adapta al 90% del viewport */
+  width: min(480px, 90vw);
+  /* Máximo 480px, pero se adapta al 90% del viewport */
   max-width: 480px;
-  
-  min-height: 400px; /* Altura mínima para mantener proporciones */
-    
+
+  min-height: 400px;
+  /* Altura mínima para mantener proporciones */
+
   /* Transición suave para cambios de tamaño */
   transition: all 0.3s ease;
+
+  .button-primary {
+    font-weight: 700;
+    font-size: 24px;
+  }
 }
 
-.button-container{
+.button-container {
   width: 100%;
   padding: clamp(10px, 3vw, 50px) clamp(20px, 5vw, 30px);
   display: flex;
   flex-direction: column;
 
-  .register-link{
+  .register-link {
     align-self: flex-end;
     text-decoration: none;
     color: var(--foreground-accent);
     font-weight: 16px;
     font-style: normal;
-    
+
   }
 }
 
 /* Media query para dispositivos muy pequeños */
 @media (max-height: 500px) {
-  main{
+  main {
     height: max-content;
     padding: 10px;
   }
 }
 
-button:disabled, button:disabled:hover{
+button:disabled,
+button:disabled:hover {
   opacity: 0.6;
   cursor: not-allowed;
   background-color: var(--secondary);

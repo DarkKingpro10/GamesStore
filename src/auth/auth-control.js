@@ -5,27 +5,48 @@ import {
 	showSuccess,
 } from "../utils/alerts.js";
 
+let currentUser = null;
+let authInitialized = false;
+
 /**
  * Redirigir al usuario basado en su estado de autenticación
  */
 async function redirectBasedOnAuth() {
-	const currentUser = getCurrentUser();
+	// Si no está inicializado, esperar un poco para que Firebase restaure desde IndexedDB
+	if (!authInitialized) {
+		await new Promise(resolve => setTimeout(resolve, 1000)); // Esperar 1 segundo
+		
+		// Verificar el usuario actual después del timeout
+		const firebaseUser = getCurrentUser();
+		if (firebaseUser) {
+			currentUser = firebaseUser;
+		}
+	}
+
 	const currentPage = window.location.pathname;
-console.log("Redirigiendo al dashboard...");
+	console.log("Current page:", currentPage, "User:", !!currentUser);
+
+	// Evitar redirecciones múltiples
+	if (window.redirecting) {
+		console.log("Ya hay una redirección en progreso...");
+		return;
+	}
+
 	// Si el usuario está autenticado y está en login/registro
 	if (
 		currentUser &&
 		(currentPage.includes("index.html") || currentPage.includes("register") || currentPage === "/")
 	) {
-		// Redirigir al dashboard
-    console.log("Redirigiendo al dashboard...");
+		window.redirecting = true;
 		window.location.href = "/dashboard/dashboard.html";
+		return;
 	}
 
 	// Si el usuario NO está autenticado y está en páginas protegidas
-	// TODO: Implementar cuando tengas páginas que requieran autenticación
 	if(!currentUser && currentPage.includes("dashboard")) {
+		window.redirecting = true;
 		window.location.href = "/index.html";
+		return;
 	}
 }
 
@@ -59,18 +80,30 @@ window.handleLogout = handleLogout;
  * Inicializar control de autenticación
  */
 export function initAuthControl() {
+	console.log("🔐 Inicializando control de autenticación...");
+	
 	// Observer de cambios de autenticación
 	onAuthChange((user) => {
+		authInitialized = true; // Marcar como inicializado cuando Firebase dispare el callback
+		
 		if (user) {
+			currentUser = user;
 			console.log("✅ Usuario autenticado:", user.email);
 			redirectBasedOnAuth();
 		} else {
+			currentUser = null;
 			console.log("👤 Usuario no autenticado");
+			redirectBasedOnAuth();
 		}
 	});
 
-	// Verificar estado inicial
-	redirectBasedOnAuth();
+	// Verificar estado inicial con timeout para IndexedDB
+	setTimeout(() => {
+		if (!authInitialized) {
+			console.log("⚠️ Firebase no ha disparado callback, verificando manualmente...");
+			redirectBasedOnAuth();
+		}
+	}, 1500);
 }
 
 export default initAuthControl;

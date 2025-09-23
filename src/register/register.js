@@ -146,4 +146,4 @@ async function handleRegisterSubmit(event) {
 REGISTER_FORM.addEventListener('submit', handleRegisterSubmit);
 
 // Inicializar control de autenticación
-initAuthControl();
+// initAuthControl();
