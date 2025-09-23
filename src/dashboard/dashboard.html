@@ -21,14 +21,12 @@
     </div>
   </header>
   <main>
-    <section class="shadow dashboard-container">
+    <div class="shadow dashboard-container">
       <header class="dashboard-header">
         <form class="input-field">
           <div class="input-icon-container">
             <input title="Buscar juegos" placeholder="Buscar juegos..." type="text" id="search" name="search" required>
-            <span 
-            title="Agregar juegos"
-            class="material-symbols-outlined cursor-pointer">
+            <span title="Agregar juegos" class="material-symbols-outlined cursor-pointer">
               search
             </span>
           </div>
@@ -37,8 +35,105 @@
           <span class="material-symbols-outlined cursor-pointer">add</span>
         </button>
       </header>
-    </section>
+      <h1 class="dashboard-title">Listado de juegos</h1>
+      <section id="games-list">
+        <article class="game-card cursor-pointer">
+          <div class="game-image-container">
+            <div class="game-image-actions">
+              <div class="game-image-action-btn">
+                <img src="/PlayStation.svg" alt="Icono de la plataforma">
+              </div>
+              <button type="button" class="game-image-action-btn" title="Eliminar juego">
+                <span class="material-symbols-outlined">delete</span>
+              </button>
+            </div>
+            <!-- <div class="game-image-overlay">
+              <button type="button">
+                <span class="material-symbols-outlined">edit</span>
+              </button>
+            </div> -->
+            <img
+              src="https://imgs.search.brave.com/bQqy9XC0VEUE8wW09OCCMF9O3aQb6IGAPphoA0R_hIA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZGV4ZXJ0by5jb20v/Y2RuLWltYWdlL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI1LzAz/LzE4L2dvZC1vZi13/YXItdHYtc2hvdy5q/cGc_d2lkdGg9MTIw/MCZxdWFsaXR5PTc1/JmZvcm1hdD1hdXRv"
+              alt="Imagen del juego">
+          </div>
+          <!--Info-->
+          <div class="game-info-container">
+            <p class="game-title">God of War</p>
+            <span class="game-category">RPG/Aventura</span>
+            <div class="game-price-date-container">
+              <span class="game-price">$59.99</span>
+              <span class="game-release-date">19/09/2025</span>
+
+            </div>
+          </div>
+        </article>
+        <article class="game-card cursor-pointer">
+          <div class="game-image-container">
+            <div class="game-image-actions">
+              <div class="game-image-action-btn">
+                <img src="/PlayStation.svg" alt="Icono de la plataforma">
+              </div>
+              <button type="button" class="game-image-action-btn" title="Eliminar juego">
+                <span class="material-symbols-outlined">delete</span>
+              </button>
+            </div>
+            <!-- <div class="game-image-overlay">
+              <button type="button">
+                <span class="material-symbols-outlined">edit</span>
+              </button>
+            </div> -->
+            <img
+              src="https://imgs.search.brave.com/bQqy9XC0VEUE8wW09OCCMF9O3aQb6IGAPphoA0R_hIA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZGV4ZXJ0by5jb20v/Y2RuLWltYWdlL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI1LzAz/LzE4L2dvZC1vZi13/YXItdHYtc2hvdy5q/cGc_d2lkdGg9MTIw/MCZxdWFsaXR5PTc1/JmZvcm1hdD1hdXRv"
+              alt="Imagen del juego">
+          </div>
+          <!--Info-->
+          <div class="game-info-container">
+            <p class="game-title">God of War</p>
+            <span class="game-category">RPG/Aventura</span>
+            <div class="game-price-date-container">
+              <span class="game-price">$59.99</span>
+              <span class="game-release-date">19/09/2025</span>
+
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
   </main>
+
+  <template id="game-card-template">
+    <article class="game-card cursor-pointer">
+      <div class="game-image-container">
+        <div class="game-image-actions">
+          <div class="game-image-action-btn">
+            <img src="/PlayStation.svg" alt="Icono de la plataforma">
+          </div>
+          <button type="button" class="game-image-action-btn" title="Eliminar juego">
+            <span class="material-symbols-outlined">delete</span>
+          </button>
+        </div>
+        <!-- <div class="game-image-overlay">
+              <button type="button">
+                <span class="material-symbols-outlined">edit</span>
+              </button>
+            </div> -->
+        <img
+          src="https://imgs.search.brave.com/bQqy9XC0VEUE8wW09OCCMF9O3aQb6IGAPphoA0R_hIA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZGV4ZXJ0by5jb20v/Y2RuLWltYWdlL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI1LzAz/LzE4L2dvZC1vZi13/YXItdHYtc2hvdy5q/cGc_d2lkdGg9MTIw/MCZxdWFsaXR5PTc1/JmZvcm1hdD1hdXRv"
+          alt="Imagen del juego">
+      </div>
+      <!--Info-->
+      <div class="game-info-container">
+        <p class="game-title">God of War</p>
+        <span class="game-category">RPG/Aventura</span>
+        <div class="game-price-date-container">
+          <span class="game-price">$59.99</span>
+          <span class="game-release-date">19/09/2025</span>
+
+        </div>
+      </div>
+    </article>
+  </template>
+
   <script type="module" src="./dashboard.js"></script>
 </body>
 
