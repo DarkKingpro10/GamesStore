@@ -144,14 +144,15 @@ body {
 		font-weight: 700;
 	}
 
-	.input-icon-container{
+	.input-icon-container {
 		width: 100%;
 		display: flex;
 		gap: 10px;
 		background: var(--foreground-color);
 		border-radius: 25px;
 		padding-right: 10px;
-		.material-symbols-outlined{
+
+		.material-symbols-outlined {
 			display: flex;
 			align-items: center;
 		}
@@ -169,8 +170,8 @@ body {
 		background: var(--foreground-color);
 		/* color: var(--font-color-revert); */
 		border-radius: 25px;
-		padding: 10px 20px;			
-		flex:1;
+		padding: 10px 20px;
+		flex: 1;
 
 		&:focus {
 			outline: 2px solid var(--accent);
@@ -179,7 +180,7 @@ body {
 }
 
 /*Button styles*/
-.btn-primary{
+.btn-primary {
 	background: var(--primary);
 	color: var(--font-color-revert);
 	border-radius: 25px;
@@ -189,8 +190,31 @@ body {
 	font-weight: 700;
 	transition: all 0.3s ease-in;
 
-	&:hover{
+	&:hover {
 		background-color: var(--foreground-color);
 		color: var(--foreground-accent)
 	}
+}
+
+/* Estilos para campos con errores */
+.input-field--error input, .input-field--error input:focus {
+	outline: 2px solid #dc2626;
+	box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.input-field--error:has(.input-icon-container) {
+	input {
+		outline: none;
+		box-shadow: none;
+	}
+
+	.input-icon-container {
+		outline: 2px solid #dc2626;
+		box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+	}
+
+}
+
+.input-field--error label {
+	color: #dc2626;
 }

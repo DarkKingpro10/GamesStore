@@ -1,9 +1,7 @@
-import { loginUser, onAuthChange } from '../firebase/auth.js';
+import { loginUser } from '../firebase/auth.js';
 import { loginSchema, validateWithZod } from '../validation/schemas.js';
 import { initAuthControl } from '../auth/auth-control.js';
 import { showError, showAuthSuccess, showLoading, closeSwal } from '../utils/alerts.js';
-
-console.log("GamesStore UI cargada");
 
 const TOGGLE_PASSWORD = document.getElementById("togglePassword");
 const PASSWORD_INPUT = document.getElementById("password");
@@ -63,10 +61,7 @@ function showMessage(message, type = 'error', field = null) {
  * Manejar el envío del formulario de login
  */
 async function handleLoginSubmit(event) {
-	event.preventDefault();
-	
-	console.log('🔐 Procesando login...');
-	
+	event.preventDefault();		
 	// Validar formulario con Zod
 	const validation = validateLoginForm();
 	if (!validation.success) {
@@ -76,7 +71,6 @@ async function handleLoginSubmit(event) {
 	
 	// Deshabilitar el formulario durante el proceso
 	const submitButton = LOGIN_FORM.querySelector('button[type="submit"]');
-	const originalText = submitButton.textContent;
 	submitButton.disabled = true;
 	
 	// Mostrar loading con SweetAlert2
@@ -95,18 +89,14 @@ async function handleLoginSubmit(event) {
 			
 			// Limpiar formulario
 			LOGIN_FORM.reset();
-			
-			// La redirección se manejará automáticamente por el auth observer
-			console.log('🎯 Login exitoso, el usuario será redirigido automáticamente');
-			
 		} else {
+			console.log(result)
 			showMessage(result.message, 'error');
 		}
 		
 	} catch (error) {
 		// Cerrar loading en caso de error
 		closeSwal();
-		console.error('❌ Error inesperado:', error);
 		showError('Error inesperado', 'Por favor intenta de nuevo más tarde');
 	}
 	

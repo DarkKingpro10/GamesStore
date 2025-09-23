@@ -16,9 +16,7 @@ import { auth } from './config.js';
  * @returns {Promise<Object>} - Resultado de la operación
  */
 export async function registerUser(email, password, displayName = '') {
-  try {
-    console.log('🔐 Registrando usuario:', email);
-    
+  try {    
     // Crear usuario con email y contraseña
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
@@ -30,7 +28,7 @@ export async function registerUser(email, password, displayName = '') {
       });
     }
     
-    console.log('✅ Usuario registrado exitosamente:', user.uid);
+    console.log('Usuario registrado exitosamente:', user.uid);
     
     return {
       success: true,
@@ -42,9 +40,7 @@ export async function registerUser(email, password, displayName = '') {
       message: 'Usuario registrado exitosamente'
     };
     
-  } catch (error) {
-    console.error('❌ Error al registrar usuario:', error);
-    
+  } catch (error) {    
     let errorMessage = 'Error al registrar usuario';
     
     // Personalizar mensajes de error
@@ -80,8 +76,7 @@ export async function registerUser(email, password, displayName = '') {
  * @returns {Promise<Object>} - Resultado de la operación
  */
 export async function loginUser(email, password) {
-  try {
-    
+  try {    
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
     
@@ -98,7 +93,7 @@ export async function loginUser(email, password) {
     };
     
   } catch (error) {
-    console.error('❌ Error al iniciar sesión:', error);
+    console.error('Error al iniciar sesión:', error);
     
     let errorMessage = 'Error al iniciar sesión';
     
@@ -107,17 +102,14 @@ export async function loginUser(email, password) {
       case 'auth/user-not-found':
         errorMessage = 'No existe una cuenta con este email';
         break;
-      case 'auth/wrong-password':
-        errorMessage = 'Contraseña incorrecta';
-        break;
-      case 'auth/invalid-email':
-        errorMessage = 'El email no es válido';
-        break;
       case 'auth/user-disabled':
         errorMessage = 'Esta cuenta ha sido deshabilitada';
         break;
       case 'auth/too-many-requests':
         errorMessage = 'Demasiados intentos fallidos. Intenta más tarde';
+        break;
+      case "auth/invalid-credential":
+        errorMessage = "Credenciales inválidas. Por favor verifica tus datos.";
         break;
       default:
         errorMessage = error.message;

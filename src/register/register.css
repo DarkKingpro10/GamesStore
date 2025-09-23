@@ -5,13 +5,3 @@
     color: var(--primary);
   }
 }
-
-/* Estilos para campos con errores */
-.input-field--error input {
-  border: 2px solid #dc2626 !important;
-  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-}
-
-.input-field--error label {
-  color: #dc2626;
-}

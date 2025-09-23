@@ -55,11 +55,6 @@ export function loadExternalLinks() {
 			});
 		}
 
-		// Manejar eventos de carga
-		link.onload = () => {
-			console.log(`✅ Link cargado exitosamente: ${linkConfig.URL}`);
-		};
-
 		link.onerror = () => {
 			console.error(`❌ Error al cargar link: ${linkConfig.URL}`);
 		};
@@ -88,7 +83,7 @@ export async function initializeApp() {
 			const { disableHistoryNavigation } = await import('./electron/navigation-control.js');
 			disableHistoryNavigation();
 		} catch (error) {
-			console.warn('⚠️ No se pudo cargar control de navegación:', error);
+			console.warn('No se pudo cargar control de navegación:', error);
 		}
 	} else {
 		console.log('🌐 Ejecutándose en navegador web');
