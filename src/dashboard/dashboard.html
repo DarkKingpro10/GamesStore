@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="dashboard.css">
   <script type="module" src="../general.js" defer></script>
 </head>
@@ -31,72 +33,12 @@
             </span>
           </div>
         </form>
-        <button type="button">
+        <button type="button" id="addGameButton">
           <span class="material-symbols-outlined cursor-pointer">add</span>
         </button>
       </header>
       <h1 class="dashboard-title">Listado de juegos</h1>
       <section id="games-list">
-        <article class="game-card cursor-pointer">
-          <div class="game-image-container">
-            <div class="game-image-actions">
-              <div class="game-image-action-btn">
-                <img src="/PlayStation.svg" alt="Icono de la plataforma">
-              </div>
-              <button type="button" class="game-image-action-btn" title="Eliminar juego">
-                <span class="material-symbols-outlined">delete</span>
-              </button>
-            </div>
-            <!-- <div class="game-image-overlay">
-              <button type="button">
-                <span class="material-symbols-outlined">edit</span>
-              </button>
-            </div> -->
-            <img
-              src="https://imgs.search.brave.com/bQqy9XC0VEUE8wW09OCCMF9O3aQb6IGAPphoA0R_hIA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZGV4ZXJ0by5jb20v/Y2RuLWltYWdlL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI1LzAz/LzE4L2dvZC1vZi13/YXItdHYtc2hvdy5q/cGc_d2lkdGg9MTIw/MCZxdWFsaXR5PTc1/JmZvcm1hdD1hdXRv"
-              alt="Imagen del juego">
-          </div>
-          <!--Info-->
-          <div class="game-info-container">
-            <p class="game-title">God of War</p>
-            <span class="game-category">RPG/Aventura</span>
-            <div class="game-price-date-container">
-              <span class="game-price">$59.99</span>
-              <span class="game-release-date">19/09/2025</span>
-
-            </div>
-          </div>
-        </article>
-        <article class="game-card cursor-pointer">
-          <div class="game-image-container">
-            <div class="game-image-actions">
-              <div class="game-image-action-btn">
-                <img src="/PlayStation.svg" alt="Icono de la plataforma">
-              </div>
-              <button type="button" class="game-image-action-btn" title="Eliminar juego">
-                <span class="material-symbols-outlined">delete</span>
-              </button>
-            </div>
-            <!-- <div class="game-image-overlay">
-              <button type="button">
-                <span class="material-symbols-outlined">edit</span>
-              </button>
-            </div> -->
-            <img
-              src="https://imgs.search.brave.com/bQqy9XC0VEUE8wW09OCCMF9O3aQb6IGAPphoA0R_hIA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZGV4ZXJ0by5jb20v/Y2RuLWltYWdlL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI1LzAz/LzE4L2dvZC1vZi13/YXItdHYtc2hvdy5q/cGc_d2lkdGg9MTIw/MCZxdWFsaXR5PTc1/JmZvcm1hdD1hdXRv"
-              alt="Imagen del juego">
-          </div>
-          <!--Info-->
-          <div class="game-info-container">
-            <p class="game-title">God of War</p>
-            <span class="game-category">RPG/Aventura</span>
-            <div class="game-price-date-container">
-              <span class="game-price">$59.99</span>
-              <span class="game-release-date">19/09/2025</span>
-
-            </div>
-          </div>
-        </article>
       </section>
     </div>
   </main>
@@ -106,9 +48,9 @@
       <div class="game-image-container">
         <div class="game-image-actions">
           <div class="game-image-action-btn">
-            <img src="/PlayStation.svg" alt="Icono de la plataforma">
+            <img src="../public/PlayStation.svg" alt="Icono de la plataforma">
           </div>
-          <button type="button" class="game-image-action-btn" title="Eliminar juego">
+          <button type="button" class="game-image-action-btn delete-button" title="Eliminar juego">
             <span class="material-symbols-outlined">delete</span>
           </button>
         </div>
@@ -117,8 +59,8 @@
                 <span class="material-symbols-outlined">edit</span>
               </button>
             </div> -->
-        <img
-          src="https://imgs.search.brave.com/bQqy9XC0VEUE8wW09OCCMF9O3aQb6IGAPphoA0R_hIA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZGV4ZXJ0by5jb20v/Y2RuLWltYWdlL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDI1LzAz/LzE4L2dvZC1vZi13/YXItdHYtc2hvdy5q/cGc_d2lkdGg9MTIw/MCZxdWFsaXR5PTc1/JmZvcm1hdD1hdXRv"
+        <img class="game-image"
+          src="https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png"
           alt="Imagen del juego">
       </div>
       <!--Info-->
@@ -133,6 +75,73 @@
       </div>
     </article>
   </template>
+
+  <!-- Dialog para agregar juego -->
+  <dialog id="addGameModal" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Agregar</h2>
+      </div>
+      <form id="addGameForm" class="modal-form">
+        <div class="form-row">
+          <div class="input-field">
+            <label for="gameName">Nombre del juego</label>
+            <input type="text" id="gameName" name="gameName" placeholder="Nombre del juego" required>
+          </div>
+          <div class="input-field">
+            <label for="gameGenre">Género del juego</label>
+            <div class="select-container">
+              <select id="gameGenre" name="gameGenre" required>
+                <option value="">Seleccionar género</option>
+              </select>
+              <span class="material-symbols-outlined select-arrow">keyboard_arrow_down</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-field">
+            <label for="gamePlatform">Plataforma</label>
+            <div class="select-container">
+              <select id="gamePlatform" name="gamePlatform" required>
+                <option value="">Seleccionar plataforma</option>
+              </select>
+              <span class="material-symbols-outlined select-arrow">keyboard_arrow_down</span>
+            </div>
+          </div>
+          <div class="input-field">
+            <label for="gameDate">Fecha</label>
+            <div class="input-icon-container">
+              <input type="date" id="gameDate" name="gameDate" required>
+              <span class="material-symbols-outlined">calendar_today</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="input-field">
+            <label for="gameImageUrl">URL de la imagen</label>
+            <input type="url" id="gameImageUrl" name="gameImageUrl" placeholder="https://..." required>
+          </div>
+          <div class="input-field">
+            <label for="gamePrice">Precio</label>
+            <input type="text" id="gamePrice" name="gamePrice" placeholder="$25.00" required>
+          </div>
+        </div>
+
+        <div class="input-field">
+          <label for="gameDescription">Descripción</label>
+          <textarea id="gameDescription" name="gameDescription" placeholder="Descripción del juego..." rows="4"
+            required></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelButton" class="btn-secondary">Cancelar</button>
+          <button type="submit" class="btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
 
   <script type="module" src="./dashboard.js"></script>
 </body>

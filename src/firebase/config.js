@@ -1,6 +1,7 @@
 // Configuración de Firebase usando variables de entorno
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 // Validar que todas las variables de entorno estén definidas
 const requiredEnvVars = [
@@ -29,12 +30,12 @@ let app;
 
 // Configuración de Firebase desde variables de entorno
 const firebaseConfig = {
-	apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-	authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-	projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-	storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-	messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-	appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: "AIzaSyB3TC-JgnjmRO6voTt-R8Xdpv-DnPaiTN8",
+  authDomain: "gamesstore-3ba6a.firebaseapp.com",
+  projectId: "gamesstore-3ba6a",
+  storageBucket: "gamesstore-3ba6a.firebasestorage.app",
+  messagingSenderId: "426729169036",
+  appId: "1:426729169036:web:7654cdcdba1aa22806dba9"
 };
 
 console.log(
@@ -44,6 +45,9 @@ console.log(
 
 // Inicializar Firebase
 app = initializeApp(firebaseConfig);
+
+// Inicializar Firestore
+export const db = getFirestore(app);
 
 // Inicializar Firebase Authentication y exportar
 export const auth = getAuth(app);
