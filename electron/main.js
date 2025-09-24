@@ -31,8 +31,6 @@ function createWindow() {
 		},
 	});
 
-	// // Load the index.html of the app.
-	// win.loadFile("index.html");
 
 	if (isDev) {
 		// En desarrollo, cargar desde el servidor de Vite

@@ -32,6 +32,7 @@ export default defineConfig(({ command, mode }) => {
 				input: {
 					main: "src/index.html",
 					register: "src/register/register.html",
+					dashboard: "src/dashboard/dashboard.html",
 				},
 			},
 			// Asegurar que las rutas relativas se resuelvan correctamente

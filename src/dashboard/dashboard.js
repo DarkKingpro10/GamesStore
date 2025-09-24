@@ -264,7 +264,7 @@ function createGameCard(game) {
 	// Obtener el icono de la plataforma
 	const platformName =
 		platform.plataforma_name || platform.nombre || platform.plataforma || "PC";
-	platformIcon.src = `../public/${platformName}.svg`;
+	platformIcon.src = `../${platformName}.svg`;
 	platformIcon.alt = `Icono de ${platformName}`;
 
 	gameTitle.textContent = game.name || "Sin nombre";

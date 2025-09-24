@@ -1,5 +1,5 @@
 // Control de rutas y autenticación
-import { onAuthChange, getCurrentUser } from "../firebase/auth.js";
+import { onAuthChange, getCurrentUser, logoutUser } from "../firebase/auth.js";
 import {
 	showLogoutConfirmation,
 	showSuccess,
@@ -38,13 +38,19 @@ async function redirectBasedOnAuth() {
 		(currentPage.includes("index.html") || currentPage.includes("register") || currentPage === "/")
 	) {
 		window.redirecting = true;
-		window.location.href = "/dashboard/dashboard.html";
+		window.location.href = "./dashboard/dashboard.html";
 		return;
 	}
 
 	// Si el usuario NO está autenticado y está en páginas protegidas
 	if(!currentUser && currentPage.includes("dashboard")) {
 		window.redirecting = true;
+
+		if(window.app?.env?.isElectron){
+			window.location.href = "../index.html";
+			return;
+		}
+
 		window.location.href = "/index.html";
 		return;
 	}
@@ -59,7 +65,6 @@ async function handleLogout() {
 		const confirmed = await showLogoutConfirmation();
 
 		if (confirmed.isConfirmed) {
-			const { logoutUser } = await import("../firebase/auth.js");
 			const result = await logoutUser();
 
 			if (result.success) {
