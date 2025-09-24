@@ -39,7 +39,7 @@ const firebaseConfig = {
 };
 
 console.log(
-	"🔥 Configurando Firebase para proyecto:",
+	"Configurando Firebase para proyecto:",
 	firebaseConfig.projectId
 );
 

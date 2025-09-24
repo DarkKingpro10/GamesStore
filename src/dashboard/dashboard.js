@@ -1,4 +1,3 @@
-import initAuthControl from "../auth/auth-control";
 import { logoutUser } from "../firebase/auth";
 import {
 	showLogoutConfirmation,
@@ -131,7 +130,7 @@ async function loadGenres() {
 		genresData.forEach((genre) => {
 			const option = document.createElement("option");
 			option.value = genre.id;
-			option.textContent = genre.genero_nombre || genre.nombre || genre.genero;
+			option.textContent = genre.genero_nombre;
 			GAME_GENRE_SELECT.appendChild(option);
 		});
 
@@ -159,8 +158,7 @@ async function loadPlatforms() {
 		platformsData.forEach((platform) => {
 			const option = document.createElement("option");
 			option.value = platform.id;
-			option.textContent =
-				platform.plataforma_name || platform.nombre || platform.plataforma;
+			option.textContent = platform.plataforma_name;
 			GAME_PLATFORM_SELECT.appendChild(option);
 		});
 
@@ -210,12 +208,7 @@ function handleSearch(e) {
 			const gameName = game.name ? game.name.toLowerCase() : "";
 			const gameGenre = genresData.find((g) => g.id === game.genreId);
 			const genreName = gameGenre
-				? (
-						gameGenre.genero_nombre ||
-						gameGenre.nombre ||
-						gameGenre.genero ||
-						""
-				  ).toLowerCase()
+				? (gameGenre.genero_nombre ?? "").toLowerCase()
 				: "";
 
 			return gameName.includes(searchTerm) || genreName.includes(searchTerm);
@@ -287,9 +280,8 @@ function createGameCard(game) {
 
 	// Agregar event listener para eliminar (con mayor prioridad)
 	deleteButton.addEventListener("click", (e) => {
-		e.preventDefault(); // Debug
+		e.preventDefault();
 		handleDeleteGame(game.id, game.name);
-		console.log("HOLA");
 		e.stopPropagation();
 	});
 
@@ -308,16 +300,16 @@ function createGameCard(game) {
 	const gameCardElement = gameCard.querySelector(".game-card");
 	gameCardElement.addEventListener("click", (e) => {
 		// Solo evitar abrir el modal si el clic fue en elementos relacionados con eliminar
-		if (
-			e.target.classList.contains("material-symbols-outlined") &&
-			e.target.textContent.trim() === "delete"
-		) {
-			return; // Es el icono de delete, no abrir modal
-		}
+		// if (
+		// 	e.target.classList.contains("material-symbols-outlined") &&
+		// 	e.target.textContent.trim() === "delete"
+		// ) {
+		// 	return; // Es el icono de delete, no abrir modal
+		// }
 
-		if (e.target.tagName === "BUTTON" && e.target.title === "Eliminar juego") {
-			return; // Es el botón de eliminar, no abrir modal
-		}
+		// if (e.target.tagName === "BUTTON" && e.target.title === "Eliminar juego") {
+		// 	return; // Es el botón de eliminar, no abrir modal
+		// }
 
 		openEditModal(game);
 	});
@@ -454,9 +446,7 @@ async function initApp() {
 		// Cargar datos secuencialmente para evitar sobrecarga
 		showLoading("Cargando juegos...", "Por favor espera");
 		try {
-			await loadGenres();
-			await loadPlatforms();
-			await loadGames();
+			await Promise.all([loadGenres(), loadPlatforms(), loadGames()]);
 		} catch (dataError) {
 			console.error("❌ Error cargando datos:", dataError);
 			throw dataError;
