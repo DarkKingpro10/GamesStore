@@ -2,7 +2,7 @@
 import Swal from "sweetalert2";
 
 const isModalOpen = () => {
-	const modal = document.getElementsByClassName("addGameModal");
+	const modal = document.getElementById("addGameModal");
 	console.log(modal);
 	if (modal && modal.open) return true;
 	return false;

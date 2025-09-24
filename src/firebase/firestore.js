@@ -114,7 +114,6 @@ export async function deleteGame(gameId) {
  * @returns {Promise<void>}
  */
 export async function updateGame(gameId, gameData) {
-  throw new Error("Función deshabilitada para pruebas");
   try {
     await updateDoc(doc(db, "juegos", gameId), {
       ...gameData,

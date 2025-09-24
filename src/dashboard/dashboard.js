@@ -78,7 +78,7 @@ ADD_GAME_MODAL.addEventListener("cancel", (e) => {
 function openModal() {
 	isEditMode = false;
 	currentEditingGame = null;
-	document.querySelector('.modal-header h2').textContent = 'Agregar';
+	document.querySelector(".modal-header h2").textContent = "Agregar";
 	ADD_GAME_MODAL.showModal();
 }
 
@@ -89,11 +89,11 @@ function openModal() {
 function openEditModal(game) {
 	isEditMode = true;
 	currentEditingGame = game;
-	document.querySelector('.modal-header h2').textContent = 'Editar';
-	
+	document.querySelector(".modal-header h2").textContent = "Editar";
+
 	// Llenar el formulario con los datos del juego
 	fillFormWithGameData(game);
-	
+
 	ADD_GAME_MODAL.showModal();
 }
 
@@ -102,13 +102,13 @@ function openEditModal(game) {
  * @param {Object} game - Datos del juego
  */
 function fillFormWithGameData(game) {
-	document.getElementById('gameName').value = game.name || '';
-	document.getElementById('gameGenre').value = game.genreId || '';
-	document.getElementById('gamePlatform').value = game.platformId || '';
-	document.getElementById('gameDate').value = game.releaseDate || '';
-	document.getElementById('gameImageUrl').value = game.imageUrl || '';
-	document.getElementById('gamePrice').value = game.price || '';
-	document.getElementById('gameDescription').value = game.description || '';
+	document.getElementById("gameName").value = game.name || "";
+	document.getElementById("gameGenre").value = game.genreId || "";
+	document.getElementById("gamePlatform").value = game.platformId || "";
+	document.getElementById("gameDate").value = game.releaseDate || "";
+	document.getElementById("gameImageUrl").value = game.imageUrl || "";
+	document.getElementById("gamePrice").value = game.price || "";
+	document.getElementById("gameDescription").value = game.description || "";
 }
 
 /**
@@ -152,7 +152,6 @@ async function loadGenres() {
  */
 async function loadPlatforms() {
 	try {
-
 		platformsData = await getPlatforms();
 		GAME_PLATFORM_SELECT.innerHTML =
 			'<option value="">Seleccionar plataforma</option>';
@@ -203,19 +202,26 @@ async function loadGames() {
  */
 function handleSearch(e) {
 	const searchTerm = e.target.value.toLowerCase().trim();
-	
-	if (searchTerm === '') {
+
+	if (searchTerm === "") {
 		filteredGamesData = [...gamesData];
 	} else {
-		filteredGamesData = gamesData.filter(game => {
-			const gameName = game.name ? game.name.toLowerCase() : '';
-			const gameGenre = genresData.find(g => g.id === game.genreId);
-			const genreName = gameGenre ? (gameGenre.genero_nombre || gameGenre.nombre || gameGenre.genero || '').toLowerCase() : '';
-			
+		filteredGamesData = gamesData.filter((game) => {
+			const gameName = game.name ? game.name.toLowerCase() : "";
+			const gameGenre = genresData.find((g) => g.id === game.genreId);
+			const genreName = gameGenre
+				? (
+						gameGenre.genero_nombre ||
+						gameGenre.nombre ||
+						gameGenre.genero ||
+						""
+				  ).toLowerCase()
+				: "";
+
 			return gameName.includes(searchTerm) || genreName.includes(searchTerm);
 		});
 	}
-	
+
 	displayGames(filteredGamesData);
 }
 
@@ -279,16 +285,14 @@ function createGameCard(game) {
 		gameReleaseDate.textContent = date.toLocaleDateString("es-ES");
 	}
 
-
-	console.log(deleteButton)
 	// Agregar event listener para eliminar (con mayor prioridad)
 	deleteButton.addEventListener("click", (e) => {
-		e.preventDefault();// Debug
+		e.preventDefault(); // Debug
 		handleDeleteGame(game.id, game.name);
-		console.log("HOLA")
+		console.log("HOLA");
 		e.stopPropagation();
 	});
-	
+
 	// También agregar al contenedor del botón por si acaso
 	// const deleteButtonContainer = deleteButton.closest('.game-image-action-btn');
 	// if (deleteButtonContainer) {
@@ -299,21 +303,22 @@ function createGameCard(game) {
 	// 		handleDeleteGame(game.id, game.name);
 	// 	});
 	// }
-	
+
 	// Agregar event listener para editar (click en la tarjeta)
-	const gameCardElement = gameCard.querySelector('.game-card');
+	const gameCardElement = gameCard.querySelector(".game-card");
 	gameCardElement.addEventListener("click", (e) => {
 		// Solo evitar abrir el modal si el clic fue en elementos relacionados con eliminar
-		if (e.target.classList.contains('material-symbols-outlined') && 
-		    e.target.textContent.trim() === 'delete') {
+		if (
+			e.target.classList.contains("material-symbols-outlined") &&
+			e.target.textContent.trim() === "delete"
+		) {
 			return; // Es el icono de delete, no abrir modal
 		}
-		
-		if (e.target.tagName === 'BUTTON' && e.target.title === 'Eliminar juego') {
+
+		if (e.target.tagName === "BUTTON" && e.target.title === "Eliminar juego") {
 			return; // Es el botón de eliminar, no abrir modal
 		}
-		
-		console.log("✏️ Abriendo modal de edición"); // Debug
+
 		openEditModal(game);
 	});
 
@@ -356,27 +361,33 @@ async function handleAddGame(e) {
 		if (isEditMode && currentEditingGame) {
 			// Modo edición
 			showLoading("Actualizando juego...", "Por favor espera");
-			
+
 			await updateGame(currentEditingGame.id, gameData);
-			
+
 			// Actualizar el juego en la lista local
-			const gameIndex = gamesData.findIndex(game => game.id === currentEditingGame.id);
+			const gameIndex = gamesData.findIndex(
+				(game) => game.id === currentEditingGame.id
+			);
 			if (gameIndex !== -1) {
 				gamesData[gameIndex] = { ...gameData, id: currentEditingGame.id };
 			}
-			
+
 			// Actualizar también la lista filtrada
-			const filteredIndex = filteredGamesData.findIndex(game => game.id === currentEditingGame.id);
+			const filteredIndex = filteredGamesData.findIndex(
+				(game) => game.id === currentEditingGame.id
+			);
 			if (filteredIndex !== -1) {
-				filteredGamesData[filteredIndex] = { ...gameData, id: currentEditingGame.id };
+				filteredGamesData[filteredIndex] = {
+					...gameData,
+					id: currentEditingGame.id,
+				};
 			}
-			
+
 			displayGames(filteredGamesData);
-			
+
 			closeSwal();
 			closeModal();
 			showSuccess("¡Éxito!", "Juego actualizado correctamente");
-			
 		} else {
 			// Modo agregar
 			showLoading("Agregando juego...", "Por favor espera");
@@ -393,7 +404,6 @@ async function handleAddGame(e) {
 			closeModal();
 			showSuccess("¡Éxito!", "Juego agregado correctamente");
 		}
-		
 	} catch (error) {
 		console.error("Error procesando juego:", error);
 		closeSwal();
@@ -423,7 +433,9 @@ async function handleDeleteGame(gameId, gameName) {
 
 			// Remover de ambas listas locales y actualizar vista
 			gamesData = gamesData.filter((game) => game.id !== gameId);
-			filteredGamesData = filteredGamesData.filter((game) => game.id !== gameId);
+			filteredGamesData = filteredGamesData.filter(
+				(game) => game.id !== gameId
+			);
 			displayGames(filteredGamesData);
 
 			closeSwal();
