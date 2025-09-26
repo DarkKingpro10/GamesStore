@@ -1,0 +1,156 @@
+/* Estilos personalizados para SweetAlert2 */
+
+/* Botones personalizados */
+.swal-btn-primary {
+  background-color: var(--primary) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 10px 20px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.swal-btn-primary:hover {
+  background-color: var(--secondary) !important;
+  transform: translateY(-1px) !important;
+}
+
+.swal-btn-secondary {
+  background-color: #6b7280 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 10px 20px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.swal-btn-secondary:hover {
+  background-color: #4b5563 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Popup personalizado */
+.swal-popup-custom {
+  font-family: 'Poppins', sans-serif !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Título personalizado */
+.swal2-title {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: var(--foreground) !important;
+}
+
+/* Texto personalizado */
+.swal2-html-container {
+  font-size: 14px !important;
+  color: var(--foreground-accent) !important;
+  line-height: 1.5 !important;
+}
+
+/* Iconos personalizados */
+.swal2-icon.swal2-success {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring {
+  border-color: var(--primary) !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-fix {
+  background-color: var(--background) !important;
+}
+
+.swal2-icon.swal2-error {
+  border-color: #dc2626 !important;
+  color: #dc2626 !important;
+}
+
+.swal2-icon.swal2-warning {
+  border-color: #f59e0b !important;
+  color: #f59e0b !important;
+}
+
+.swal2-icon.swal2-info {
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
+}
+
+.swal2-icon.swal2-question {
+  border-color: var(--secondary) !important;
+  color: var(--secondary) !important;
+}
+
+/* Progress bar personalizado */
+.swal2-timer-progress-bar {
+  background-color: var(--primary) !important;
+}
+
+/* Loading spinner personalizado */
+.swal2-loader {
+  border-color: var(--primary) transparent var(--primary) transparent !important;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .swal2-popup {
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
+  
+  .swal-btn-primary,
+  .swal-btn-secondary {
+    padding: 12px 24px !important;
+    font-size: 16px !important;
+  }
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+  }
+  
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.animate__animated {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+.animate__faster {
+  animation-duration: 0.2s;
+}
+
+.animate__fadeInDown {
+  animation-name: fadeInDown;
+}
+
+.animate__fadeOutUp {
+  animation-name: fadeOutUp;
+}

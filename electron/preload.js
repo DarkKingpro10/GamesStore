@@ -9,5 +9,5 @@ contextBridge.exposeInMainWorld('app', {
     minimize: () => ipcRenderer.invoke('window:action', 'minimize'),
     maximizeRestore: () => ipcRenderer.invoke('window:action', 'maximize-restore'),
     close: () => ipcRenderer.invoke('window:action', 'close'),
-  },
+  }
 });
